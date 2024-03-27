@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:favorite_place/provider/user_provider_notifier.dart';
 import 'package:favorite_place/widgets/image_input.dart';
+import 'package:favorite_place/widgets/location_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -55,13 +56,15 @@ class _AddClassScreenState extends ConsumerState<AddPlaceScreen> {
               decoration: const InputDecoration(labelText: 'Title'),
               controller: _titleController,
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 4),
             ImageInput(
               onPickImage: (File image) {
                 _selectedImage = image;
               },
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 4),
+            const LocationInput(),
+            const SizedBox(height: 8),
             ElevatedButton.icon(
               onPressed: _addPlace,
               icon: const Icon(Icons.add),

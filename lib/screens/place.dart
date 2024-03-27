@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:favorite_place/provider/user_provider_notifier.dart';
 import 'package:favorite_place/screens/add_place.dart';
 import 'package:favorite_place/widgets/place_list.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart'; // Import your AddPlaceScreen widget here
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PlaceScreen extends ConsumerWidget {
   const PlaceScreen({super.key});
@@ -26,8 +26,9 @@ class PlaceScreen extends ConsumerWidget {
         ],
       ),
       body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: PlaceList(placeList: userPlace)),
+        padding: const EdgeInsets.all(4),
+        child: PlaceList(placeList: userPlace),
+      ),
     );
   }
 }
