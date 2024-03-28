@@ -6,7 +6,9 @@ import 'package:http/http.dart' as http;
 import 'package:location/location.dart';
 
 class LocationInput extends StatefulWidget {
-  const LocationInput({super.key});
+  const LocationInput({super.key, required this.onPickLocation});
+
+  final void Function(PlaceLocation placeLocation) onPickLocation;
 
   @override
   State<LocationInput> createState() => _LocationInputState();
@@ -15,6 +17,15 @@ class LocationInput extends StatefulWidget {
 class _LocationInputState extends State<LocationInput> {
   late PlaceLocation _pickedLocation;
   bool _isGettingLocation = false;
+
+  String get locationImage {
+    if (_pickedLocation == null) return '';
+    final lat = _pickedLocation.latitude;
+    final lon = _pickedLocation.longitude;
+    const googleMapApiKey = 'YOUR_API_KEY_HERE';
+
+    return "https://maps.googleapis.com/maps/api/staticmap?center=$lat,$lon&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:A%7C$lat,$lon&key=$googleMapApiKey";
+  }
 
   void _getCurrentLocation() async {
     Location location = Location();
@@ -59,9 +70,11 @@ class _LocationInputState extends State<LocationInput> {
 
     setState(() {
       _pickedLocation = PlaceLocation(
-          latitude: latitude, longitute: longitude, address: address);
+          latitude: latitude, longitude: longitude, address: address);
       _isGettingLocation = false;
     });
+
+    widget.onPickLocation(_pickedLocation);
   }
 
   @override

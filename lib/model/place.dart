@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:uuid/uuid.dart';
@@ -6,10 +5,11 @@ import 'package:uuid/uuid.dart';
 const uuid = Uuid();
 
 class PlaceLocation {
-  PlaceLocation(
-      {required this.latitude, required this.longitute, required this.address});
+  const PlaceLocation(
+      {required this.latitude, required this.longitude, required this.address});
+
   final double latitude;
-  final double longitute;
+  final double longitude;
   final String address;
 }
 
