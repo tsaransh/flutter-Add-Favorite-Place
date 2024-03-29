@@ -3,8 +3,8 @@
         android:label="favorite_place"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <meta-data android:name="com.google.android.gro.API_KEY"
-            android:value="YOUR_API_KEY">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY_HERE"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
